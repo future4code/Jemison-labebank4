@@ -2,6 +2,7 @@ import {User,extract} from "./type"
 
 export const userAccounts:User[] = [
     {
+        id: 1,
         name: "Daniel Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1999",
@@ -11,6 +12,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
+        id: 2,
         name: "Douglas Silva",
         CPF: "121235686525",
         birthDate:"06-01-1650",
@@ -20,6 +22,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
+        id: 3,
         name: "Matheus Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1500",
