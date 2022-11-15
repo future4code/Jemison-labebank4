@@ -72,13 +72,15 @@ app.post("/createUser", (req:Request, res: Response) => {
     //Variavel body
     const body = req.body
     //Try -Catch
+    const checkParameters = !body.name ||!body.CPF 
+
     try {
         //Verificação se os dados passados são iguais ao mockDados, atraves do filter, se apenas mapear depois
         const checkUser = userAccounts.filter((user)=>{
             return user.name === body.name && user.CPF === body.CPF
         })
         //Verificar se os campos forma passados
-        if(!body.name || !body.CPF){
+        if(checkParameters){
             errorCode = 400
             throw new Error("Os campos CPF e name estão incorretos")
         }
@@ -120,9 +122,6 @@ app.put("/users/addNewBalance", (req: Request, res: Response) =>{
             errorCode = 400;
             throw new Error("A propriedade balance não é um number")
         }
-
-
-
 
         if(checkUser.length === 0){
             errorCode = 404;
