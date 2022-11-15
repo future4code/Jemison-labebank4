@@ -117,7 +117,7 @@ app.put("/users/addNewBalance", (req: Request, res: Response) =>{
 
         if(checkParameters){
             errorCode = 400;
-            throw new Error("Os campos: name, CPF e value estão errados, corrija-os")
+            throw new Error("Os campos: name, CPF e balance estão errados, corrija-os")
         }else if(typeof body.balance !== 'number'){
             errorCode = 400;
             throw new Error("A propriedade balance não é um number")
