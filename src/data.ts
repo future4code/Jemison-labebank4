@@ -1,8 +1,9 @@
 import {User,extract} from "./type"
+const id = String(new Date().getTime())
 
 export const userAccounts:User[] = [
     {
-        id: 1,
+        id: id,
         name: "Daniel Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1999",
@@ -12,7 +13,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: 2,
+        id: id,
         name: "Douglas Silva",
         CPF: "121235686525",
         birthDate:"06-01-1650",
@@ -22,7 +23,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: 3,
+        id: id,
         name: "Matheus Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1500",

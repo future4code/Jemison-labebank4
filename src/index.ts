@@ -23,7 +23,7 @@ app.get("/allUsers", (req:Request, res: Response) => {
 app.get("/user/:id", (req:Request, res: Response) => {
     let errorCode: number = 400
     try {
-        const id = Number(req.params.id)
+        const id = req.params.id
         const user = userAccounts.find((users) => users.id === id)
 
         if(!user){
