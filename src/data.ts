@@ -1,16 +1,14 @@
 import {User,extract} from "./type"
-const id = String(new Date().getTime())
+import {idGenerator} from "./idGenerator"
 
-function createGuid() {
-    function s4() {
-        return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
-}
+
+// const id = String(new Date().getTime()) - Teste
+
+
 
 export const userAccounts:User[] = [
     {
-        id: createGuid(),
+        id: idGenerator(),
         name: "Daniel Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1999",
@@ -20,7 +18,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: createGuid(),
+        id: idGenerator(),
         name: "Douglas Silva",
         CPF: "121235686525",
         birthDate:"06-01-1650",
@@ -30,7 +28,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: id,
+        id: idGenerator(),
         name: "Matheus Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1500",
