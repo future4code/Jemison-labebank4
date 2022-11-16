@@ -5,7 +5,7 @@ export type extract = {
 }
 
 export type User ={
-    id: number,
+    id: string,
     name: string,
     CPF: string,
     birthDate: string,

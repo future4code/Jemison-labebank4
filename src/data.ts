@@ -1,8 +1,14 @@
 import {User,extract} from "./type"
+import {idGenerator} from "./idGenerator"
+
+
+// const id = String(new Date().getTime()) - Teste
+
+
 
 export const userAccounts:User[] = [
     {
-        id: 1,
+        id: idGenerator(),
         name: "Daniel Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1999",
@@ -12,7 +18,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: 2,
+        id: idGenerator(),
         name: "Douglas Silva",
         CPF: "121235686525",
         birthDate:"06-01-1650",
@@ -22,7 +28,7 @@ export const userAccounts:User[] = [
         ]
     },
     {
-        id: 3,
+        id: idGenerator(),
         name: "Matheus Sousa",
         CPF: "121235686525",
         birthDate:"06-09-1500",
