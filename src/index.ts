@@ -46,9 +46,21 @@ app.post("/createUser", (req:Request, res: Response) => {
 
     try {
         const {name, CPF, birthDate} = req.body
+        if(name.length < 3){
+            errorCode = 422
+            throw new Error("Nome deve ter no mínimo 3 caracteres")
+        }
         if(!name || !CPF || !birthDate){
             errorCode= 422;
             throw new Error("Precisa informar: Nome, CPF  e data nascimento")
+        }
+        if(CPF.length !== 11){
+            errorCode= 422;
+            throw new Error("CPF precisa ter 11 digitos")
+        }
+        if(birthDate.length !== 10){
+            errorCode= 422;
+            throw new Error("Data de nascimento precisa ter 10 digitos")
         }
 
         const newUser:User = {
