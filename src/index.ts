@@ -46,6 +46,23 @@ app.post("/createUser", (req:Request, res: Response) => {
 
     try {
         const {name, CPF, birthDate} = req.body
+
+    //Validação de idade do usuario
+        const today = new Date()
+        const birthDateUser = new Date(birthDate)
+        let age = today.getFullYear() - birthDateUser.getFullYear()
+        const month = today.getMonth() - birthDateUser.getMonth()
+
+        if(month < 0 || (month === 0 && today.getDate() < birthDateUser.getDate())){
+            age--
+        } 
+
+        if(age < 18){
+            errorCode = 403
+            throw new Error("Usuário não pode ser menor de idade")
+        }
+        
+        
         if(name.length < 3){
             errorCode = 422
             throw new Error("Nome deve ter no mínimo 3 caracteres")
