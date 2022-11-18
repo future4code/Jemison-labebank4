@@ -1,7 +1,9 @@
 import express, {Request, Response} from "express"
 import {userAccounts} from "./data"
+import {idGenerator} from "./idGenerator"
 
 import cors from 'cors'
+import { User } from "./type"
 
 const app = express()
 
@@ -40,28 +42,32 @@ app.get("/user/:id", (req:Request, res: Response) => {
 //Requisição post para criar um novo usuario
 app.post("/createUser", (req:Request, res: Response) => {
     let errorCode: number = 400
-    try {
-        const {id, name, CPF, birthDate, balance, extract} = req.body
+    const id = idGenerator()
 
-        if(!id || !name || !CPF || !birthDate || !balance || !extract){
-            errorCode = 422
-            throw new Error("Verificar detalhes para cadastro")
+    try {
+        const {name, CPF, birthDate} = req.body
+        if(!name || !CPF || !birthDate){
+            errorCode= 422;
+            throw new Error("Precisa informar: Nome, CPF  e data nascimento")
         }
 
-        const newUser = {
-            id,
+        const newUser:User = {
+            id: id,
             name,
             CPF,
             birthDate,
-            balance,
-            extract
+            balance: 0,
+            extract: [],
+
         }
 
         userAccounts.push(newUser)
 
         res.status(200).send("Usuário cadastrado com sucesso")
-    } catch (error) {
-        res.status(errorCode).send("Usário não cadastrado")
+
+        
+    } catch (error:any) {
+        res.status(errorCode).send(error.message)
     }
 })
 
